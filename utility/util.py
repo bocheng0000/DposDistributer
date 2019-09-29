@@ -79,11 +79,19 @@ def feedback(content: str, level=INFO, module="UTL"):
 def getVotersByHeight(ownerPb: str, hei: int) -> dict:
     # get the information of voters at the specified height for the owner
     _votersInfo = request.get_voters_by_height(ownerPublickey=ownerPb, height=hei)
-    voters = deepcopy(cf.investors)
+
+    if "" in cf.investors.keys():
+        voters = {}
+    else:
+        voters = deepcopy(cf.investors)
     if _votersInfo is not None:
         for _voter in _votersInfo:
             _add = _voter["Address"]
             if _add in cf.ignoreAddress:
+                feedback(content=f"{_add} is in the blacklist.", level=WARNING)
+                continue
+            elif len(_add) != 34:
+                feedback(content=f"{_add} is not standard address.", level=WARNING)
                 continue
 
             _value = strElaToIntSela(_voter["Value"])
