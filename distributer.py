@@ -75,7 +75,7 @@ def distributeReward(lastDistributeRound: int, lastDistributeHeight: int):
             util.feedback(content=f"The amound of distribution is {util.SelaToEla(_distributionThisRound)}",
                           module="DPS")
             util.feedback(
-                content=f"The percent of distribution is {_distributionThisRound / _amount}", module="DPS")
+                content="The percent of distribution is {:.2%}".format(_distributionThisRound / _amount), module="DPS")
             util.feedback(content=f"Total votes is {util.SelaToEla(_totalVotes)}", module="DPS")
             rewardInRound[i] = _receiptor
             _receiptor = {}
