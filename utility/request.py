@@ -109,7 +109,7 @@ def get_request(url: str):
 
 @retry(stop_max_attempt_number=5)
 def get_voters_by_height(ownerPublickey: str, height: int):
-    _url_request = cf.api_mist_url + api_votes_height + ownerPublickey + "/height/" + str(height)
+    _url_request = cf.api_mist_url + api_votes_height + ownerPublickey + "/" + str(height)
     resp = get_request(_url_request)
     if resp is not None:
         return resp["result"]
