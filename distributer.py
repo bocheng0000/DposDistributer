@@ -152,7 +152,7 @@ def distributeReward(lastDistributeRound: int, lastDistributeHeight: int):
     random.shuffle(outputs)
 
     # Create the transaction, include memo, attributes
-    data_memo = f"{cf.MsgForMemo} {distributionMsg}".encode()
+    data_memo = f"{cf.Memo_Prefix}{cf.MsgForMemo} {distributionMsg}".encode()
     attr = t.Attribute(usage=t.AttributeUsage_Memo, data=data_memo)
     tx_distribution = t.Transaction(inputs=inputs, outputs=outputs, attributes=[attr])
     txid_infile = encoding.bytes_to_hexstring(data=tx_distribution.hash(), reverse=True)

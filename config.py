@@ -46,3 +46,4 @@ distribution_record_file = "distribute_record.csv"  # The file for the distribut
 dpos_record_file = "dpos_record.csv"  # The file for the dpos reward record
 log_path = "logs"  # The configuration for log
 tx_path = "txs"  # The path to store the transaction
+Memo_Prefix = "type:text,msg:"
